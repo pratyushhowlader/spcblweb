@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>The Security Printing Corporation (SPCBL)</title>
+
+
+
+<body>
+<div class="content" layout:fragment="content">
+    <form method="post" th:action="@{/api/excel/upload}" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="file" name="file" class="form-control-file">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload File</button>
+    </form>
+</div>
+</body>
+</html>
