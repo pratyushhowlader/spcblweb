@@ -5,16 +5,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spcbl.org.bd.osp.service.DailyProductionService;
+import spcbl.org.bd.osp.service.DwReportService;
 
 
 import java.util.List;
 
 @Controller
 public class HomeController {
-  private final DailyProductionService dailyProductionService;
+ /* private final DailyProductionService dailyProductionService;
 
     public HomeController(DailyProductionService dailyProductionService) {
         this.dailyProductionService = dailyProductionService;
+    }*/
+    private final DwReportService dwReportService;
+
+    public HomeController(DwReportService dwReportService) {
+        this.dwReportService = dwReportService;
     }
 
     @GetMapping("/")
@@ -26,8 +32,8 @@ public class HomeController {
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.addObject(this.dailyProductionService.listDailyProduction());
-        modelAndView.addObject("productionlist",this.dailyProductionService.listDailyProduction());
+        modelAndView.addObject(this.dwReportService.dwReport());
+        modelAndView.addObject("productionlist",this.dwReportService.dwReport());
         modelAndView.setViewName("home.html");
         return modelAndView;
 

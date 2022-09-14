@@ -16,12 +16,13 @@
 
         <thead>
         <tr>
-            <th>ID</th>
             <th>Date</th>
-            <th>M/C Name</th>
-            <th>Item_name</th>
+            <th>Machine Name</th>
+            <th>Item Name</th>
             <th>Deno</th>
-            <th>Printed Sheet</th>
+            <th>Trolly/FO</th>
+            <th>Daily Printing</th>
+            <th>Weakly Printing</th>
             <th>Machine Status</th>
         </tr>
         </thead>
@@ -30,13 +31,15 @@
 
           <tr  th:each="production: ${productionlist}">
 
-              <td th:text="${production.id}" />
               <td th:text="${production.date}" />
               <td th:text="${production.mcName}" />
               <td th:text="${production.itemName}" />
               <td th:text="${production.deno}" />
-              <td th:text="${production.totalPrinted}" />
-              <td th:text="${production.mcStatus}" />
+              <td th:text="${production.fo}" />
+              <td th:text="${production.dprinting}" />
+              <td th:text="${production.totalPrinting}" />
+              <td th:text="${production.machineStatus}" />
+
 
 
           </tr>
