@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>The security printing Corporation</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-<h3>This is test</h3>
+<div class="content" layout:fragment="content">
+    <h3>Production Report</h3>
+    <table id="dailyReport" class="table table-bordered table-striped" >
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>M/C Name</th>
+            <th>Item_name</th>
+            <th>Deno</th>
+            <th>Printed Sheet</th>
+            <th>Machine Status</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+          <tr  th:each="production: ${productionlist}">
+
+              <td th:text="${production.id}" />
+              <td th:text="${production.date}" />
+              <td th:text="${production.mcName}" />
+              <td th:text="${production.itemName}" />
+              <td th:text="${production.deno}" />
+              <td th:text="${production.totalPrinted}" />
+              <td th:text="${production.mcStatus}" />
+
+
+          </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<th:block layout:fragment="scripts">
+    <script>
+        $(document).ready(function() {
+            $("#dailyReport").DataTable({
+                'aoColumnDefs': [{
+                    'bSortable': false,
+                    'aTargets': [-1] /* 1st one, start by the right */
+                }]
+            });
+        })
+    </script>
+</th:block>
 </body>
+
 </html>
