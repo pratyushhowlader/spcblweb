@@ -30,7 +30,7 @@ public class ExcelHelper {
         }
         return true;
     }
-    public static List<DailyProduction> excelToTutorials(InputStream is) {
+    public static List<DailyProduction> excelToTutorials(InputStream is,Date ddate) {
         try {
             System.out.println("test");
             Workbook workbook = new XSSFWorkbook(is);
@@ -49,6 +49,7 @@ public class ExcelHelper {
                 }
                 Iterator<Cell> cellsInRow = currentRow.iterator();
                 DailyProduction dailyProduction = new DailyProduction();
+                dailyProduction.setDate(ddate);
                 int cellIdx = 0;
                 while (cellsInRow.hasNext()) {
                     Cell currentCell = cellsInRow.next();
@@ -69,10 +70,10 @@ public class ExcelHelper {
                             dailyProduction.setItemName(currentCell.getStringCellValue());
                             break;
                         case 3:
-                            dailyProduction.setDeno(currentCell.getStringCellValue());
+                            dailyProduction.setDeno(currentCell.toString());
                             break;
                         case 4:
-                            dailyProduction.setFo(currentCell.getStringCellValue());
+                            dailyProduction.setFo(currentCell.toString());
                             break;
                         case 5:
                             dailyProduction.setTotalPrinted((int)currentCell.getNumericCellValue());

@@ -9,14 +9,15 @@ import spcbl.org.bd.osp.repository.DailyProductionRepo;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 @Service
 public class ExcelService {
     @Autowired
     DailyProductionRepo repository;
-    public void save(MultipartFile file) {
+    public void save(MultipartFile file, Date ddate) {
         try {
-            List<DailyProduction> tutorials = ExcelHelper.excelToTutorials(file.getInputStream());
+            List<DailyProduction> tutorials = ExcelHelper.excelToTutorials(file.getInputStream(),ddate);
             repository.saveAll(tutorials);
         } catch (IOException e) {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());

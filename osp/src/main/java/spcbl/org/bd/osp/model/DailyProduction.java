@@ -1,6 +1,7 @@
 package spcbl.org.bd.osp.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tbl_dpr")
@@ -10,7 +11,7 @@ public class DailyProduction {
     private Integer id;
 
     @Column(name = "date")
-    private java.sql.Date date;
+    private Date date;
 
     @Column(name = "mc_name")
     private String mcName;
@@ -47,11 +48,11 @@ public class DailyProduction {
         this.id = id;
     }
 
-    public java.sql.Date getDate() {
+    public Date getDate() {
         return this.date;
     }
 
-    public void setDate(java.sql.Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

@@ -12,6 +12,7 @@ import spcbl.org.bd.osp.model.DailyProduction;
 import spcbl.org.bd.osp.service.ExcelService;
 
 
+import java.util.Date;
 import java.util.List;
 @CrossOrigin("http://localhost:8080")
 @Controller
@@ -20,11 +21,12 @@ public class ExcelController {
     @Autowired
     ExcelService fileService;
     @PostMapping("/upload")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("ddate") Date ddate, @RequestParam("file") MultipartFile file) {
         String message = "";
         if (ExcelHelper.hasExcelFormat(file)) {
             try {
-                fileService.save(file);
+                System.out.println(ddate);
+                fileService.save(file,ddate);
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
                 return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
             } catch (Exception e) {
