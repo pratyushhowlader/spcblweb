@@ -58,8 +58,7 @@ public class ExcelHelper {
                             break;*/
 
                         case 0:
-                            System.out.println(currentCell.getRichStringCellValue());
-                            System.out.println(currentCell.toString());
+
                             dailyProduction.setMcName(currentCell.getStringCellValue());
 
                             break;
@@ -73,7 +72,7 @@ public class ExcelHelper {
                             dailyProduction.setDeno(currentCell.getStringCellValue());
                             break;
                         case 4:
-                            dailyProduction.setFo((int)currentCell.getNumericCellValue());
+                            dailyProduction.setFo(currentCell.getStringCellValue());
                             break;
                         case 5:
                             dailyProduction.setTotalPrinted((int)currentCell.getNumericCellValue());
