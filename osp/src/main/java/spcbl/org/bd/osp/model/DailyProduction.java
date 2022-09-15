@@ -29,13 +29,14 @@ public class DailyProduction {
 
 
 
+
     @Column(name = "fo")
-    private Integer fo;
-    public Integer getFo() {
+    private String fo;
+    public String getFo() {
         return fo;
     }
 
-    public void setFo(Integer fo) {
+    public void setFo(String fo) {
         this.fo = fo;
     }
     public Integer getId() {
