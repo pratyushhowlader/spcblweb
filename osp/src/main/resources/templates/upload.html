@@ -10,12 +10,31 @@
 
 <body>
 <div class="content" layout:fragment="content">
-    <form method="post" th:action="@{/api/excel/upload}" enctype="multipart/form-data">
-        <div class="form-group">
-            <input type="file" name="file" class="form-control-file">
-        </div>
-        <button type="submit" class="btn btn-primary">Upload File</button>
-    </form>
+
+    <div class="file_upload">
+        <form method="post" th:action="@{/api/excel/upload}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="dDate" class="form-label">Select Date</label>
+                <input type='text' id="dDate" class="datepicker-here" data-position="right top" />
+            </div>
+
+            <div class="form-group">
+                <label for="dFile" class="form-label">Choose Daily Excel</label>
+                <input type="file" name="file" class="" id="dFile">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Daily File</button>
+
+        </form>
+    </div>
+    <div class="file_upload">
+        <form method="post" th:action="@{/api/excel/upload}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="wFile" class="form-label">Choose Weakly Excel</label>
+                <input type="file" name="file" class="" id="wFile">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Weakly File</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
