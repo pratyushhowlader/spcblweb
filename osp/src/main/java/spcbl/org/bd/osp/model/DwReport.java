@@ -22,7 +22,7 @@ public class DwReport {
     private String deno;
 
     @Column(name = "fo")
-    private Integer fo;
+    private String fo;
 
     @Column(name = "date")
     private java.sql.Date date;
@@ -69,11 +69,11 @@ public class DwReport {
         this.deno = deno;
     }
 
-    public Integer getFo() {
+    public String getFo() {
         return this.fo;
     }
 
-    public void setFo(Integer fo) {
+    public void setFo(String fo) {
         this.fo = fo;
     }
 

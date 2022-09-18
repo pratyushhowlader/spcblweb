@@ -6,24 +6,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import spcbl.org.bd.osp.helper.ExcelHelper;
+import spcbl.org.bd.osp.helper.DailyExcelHelper;
+import spcbl.org.bd.osp.helper.WeaklyExcelHelper;
 import spcbl.org.bd.osp.message.ResponseMessage;
-import spcbl.org.bd.osp.model.DailyProduction;
-import spcbl.org.bd.osp.service.ExcelService;
+import spcbl.org.bd.osp.service.DailyExcelService;
+import spcbl.org.bd.osp.service.WeaklyExcelService;
 
 
 import java.util.Date;
-import java.util.List;
+
 @CrossOrigin("http://localhost:8080")
 @Controller
 @RequestMapping("/api/excel")
 public class ExcelController {
     @Autowired
-    ExcelService fileService;
-    @PostMapping("/upload")
+    DailyExcelService fileService;
+    @Autowired
+    WeaklyExcelService weaklyExcelService;
+    @PostMapping("/daily")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("ddate") Date ddate, @RequestParam("file") MultipartFile file) {
         String message = "";
-        if (ExcelHelper.hasExcelFormat(file)) {
+        if (DailyExcelHelper.hasExcelFormat(file)) {
             try {
                 System.out.println(ddate);
                 fileService.save(file,ddate);
@@ -37,16 +40,23 @@ public class ExcelController {
         message = "Please upload an excel file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
     }
-    @GetMapping("/dailyreport")
-    public ResponseEntity<List<DailyProduction>> getAllTutorials() {
-        try {
-            List<DailyProduction> tutorials = fileService.getAllTutorials();
-            if (tutorials.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    @PostMapping("/weakly")
+    public ResponseEntity<ResponseMessage> uploadFileWeakly(@RequestParam("sdate") Date sdate, @RequestParam("edate") Date edate, @RequestParam("file") MultipartFile file) {
+        String message = "";
+        if (WeaklyExcelHelper.hasExcelFormat(file)) {
+            try {
+                System.out.println(sdate);
+                weaklyExcelService.save(file,sdate,edate);
+                message = "Uploaded the file successfully: " + file.getOriginalFilename();
+                return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+            } catch (Exception e) {
+                message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+                return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
             }
-            return new ResponseEntity<>(tutorials, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        message = "Please upload an excel file!";
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
     }
+
 }

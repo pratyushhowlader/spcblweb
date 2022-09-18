@@ -3,27 +3,30 @@ package spcbl.org.bd.osp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import spcbl.org.bd.osp.helper.ExcelHelper;
+import spcbl.org.bd.osp.helper.DailyExcelHelper;
+import spcbl.org.bd.osp.helper.WeaklyExcelHelper;
 import spcbl.org.bd.osp.model.DailyProduction;
+import spcbl.org.bd.osp.model.WeaklyPlanning;
 import spcbl.org.bd.osp.repository.DailyProductionRepo;
-
+import spcbl.org.bd.osp.repository.WeaklyPlanningRepo;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
 @Service
-public class ExcelService {
+public class WeaklyExcelService {
     @Autowired
-    DailyProductionRepo repository;
-    public void save(MultipartFile file, Date ddate) {
+    WeaklyPlanningRepo repository;
+    public void save(MultipartFile file, Date sdate,Date edate) {
         try {
-            List<DailyProduction> tutorials = ExcelHelper.excelToTutorials(file.getInputStream(),ddate);
+            List<WeaklyPlanning> tutorials = WeaklyExcelHelper.excelToTutorials(file.getInputStream(),sdate,edate);
             repository.saveAll(tutorials);
         } catch (IOException e) {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }
     }
-    public List<DailyProduction> getAllTutorials() {
+    public List<WeaklyPlanning> getAllTutorials() {
         return repository.findAll();
     }
 }
