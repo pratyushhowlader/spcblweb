@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import spcbl.org.bd.osp.model.Users;
 
 public interface UserRepo extends CrudRepository <Users,Integer> {
-    @Query("SELECT u.username FROM Users u WHERE u.username = :username")
+  /*  @Query("SELECT u.username FROM Users u WHERE u.username = :username")*/
     public Users getUserByUsername(@Param("username") String username);
 }
