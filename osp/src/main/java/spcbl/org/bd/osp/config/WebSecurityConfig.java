@@ -9,11 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import spcbl.org.bd.osp.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -34,14 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return authProvider;
     }
 
-    @Override
+
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+    @Bean
+    protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        http.authenticationProvider(authenticationProvider()).authorizeRequests()
                 .antMatchers("/").hasAnyAuthority("USER", "CREATOR", "EDITOR", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
@@ -51,5 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
         ;
+        return http.build();
     }
 }
