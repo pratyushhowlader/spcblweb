@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 
 @Entity
-@Table(name = "view_name")
+@Table(name = "printingstatus")
 public class DwReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,17 @@ public class DwReport {
 
     @Column(name = "total_printing")
     private Integer totalPrinting;
+
+    @Column(name="pending")
+    private Integer pending;
+
+    public Integer getPending() {
+        return pending;
+    }
+
+    public void setPending(Integer pending) {
+        this.pending = pending;
+    }
 
     public String getMachineStatus() {
         return machineStatus;

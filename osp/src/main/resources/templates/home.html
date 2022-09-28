@@ -17,6 +17,19 @@
         &nbsp;
         <i><span sec:authentication="principal.authorities">Roles</span></i>
     </div>
+
+    <div class="search">
+        <div class="">
+            <label for="from_date">From Date</label>
+
+            <input type='text' id="from_date" name="minDate" autocomplete="off" />
+        </div>
+        <div class="">
+            <label for="to_date">To Date</label>
+
+            <input type='text' id="to_date" name="maxDate"  autocomplete="off" />
+        </div>
+    </div>
     <h3>Production Report</h3>
     <table id="dailyReport" class="table table-bordered table-striped" >
 
@@ -28,7 +41,8 @@
             <th>Deno</th>
 
             <th>Daily Printing</th>
-            <th>Weakly Printing</th>
+            <th>Weakly Target</th>
+            <th>Pending</th>
             <th>Machine Status</th>
         </tr>
         </thead>
@@ -44,6 +58,7 @@
 
               <td th:text="${production.dprinting}" />
               <td th:text="${production.totalPrinting}" />
+              <td th:text="${production.pending}"/>
               <td th:text="${production.machineStatus}" />
 
 
@@ -56,14 +71,57 @@
 
 <th:block layout:fragment="scripts">
     <script>
-        $(document).ready(function() {
-            $("#dailyReport").DataTable({
-                'aoColumnDefs': [{
-                    'bSortable': false,
-                    'aTargets': [-1] /* 1st one, start by the right */
-                }]
-            });
-        })
+     /*   $(document).ready(function() {
+            var table = $('#dailyReport').DataTable();
+
+            alert("hello");
+            // Event listener to the two range filtering inputs to redraw on input
+            $('#from_date, #to_date').keyup( function() {
+                table.draw();
+
+            } );
+        })*/
+     var minDate, maxDate;
+
+     // Custom filtering function which will search data in column four between two values
+     $.fn.dataTable.ext.search.push(
+         function( settings, data, dataIndex ) {
+             var min = minDate.val();
+             var max = maxDate.val();
+             var date = new Date( data[0] );
+
+             if (
+                 ( min === null && max === null ) ||
+                 ( min === null && date <= max ) ||
+                 ( min <= date   && max === null ) ||
+                 ( min <= date   && date <= max )
+             ) {
+                 return true;
+             }
+             return false;
+         }
+     );
+
+     $(document).ready(function() {
+         // Create date inputs
+         minDate = new DateTime($('#from_date'), {
+             format: 'MMMM Do YYYY'
+         });
+         maxDate = new DateTime($('#to_date'), {
+             format: 'MMMM Do YYYY'
+         });
+
+
+
+         // DataTables initialisation
+         var table = $('#dailyReport').DataTable();
+
+         // Refilter the table
+         $('#from_date, #to_date').on('change', function () {
+
+             table.draw();
+         });
+     });
     </script>
 </th:block>
 </body>
