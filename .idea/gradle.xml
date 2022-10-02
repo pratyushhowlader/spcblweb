@@ -16,6 +16,16 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/inventory" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../gradle-7.4.1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/inventory" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="delegatedBuild" value="false" />
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
