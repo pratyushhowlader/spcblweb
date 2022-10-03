@@ -9,12 +9,20 @@
 <body>
 
 <div class="container">
+    <header class="header">
+        <ul>
+            <li><a href="">Help</a></li>
+            <li><a href="">ICTinventory</a></li>
+        </ul>
+    </header>
     <div th:replace="fragments/navigation::navigation"></div>
     <div layout:fragment="content"></div>
+    <footer class="footer"><h2>This is footer</h2></footer>
 </div>
 
 <th:block layout:fragment="scripts">
 
 </th:block>
+
 </body>
 </html>
