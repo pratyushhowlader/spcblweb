@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding: 0;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.4rem;
+
+
+}
+a{
+
+}
+h3{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.container{
+    max-width: 1200px;
+    margin:1rem auto;
+
+}
+
+/*Header CSS*/
+.nav{
+    display: flex;
+    border-bottom: 1px solid darkred;
+    justify-content: flex-end;
+}
+.nav ul{
+    list-style: none;
+
+}
+.nav ul li{
+    display: inline-block;
+    padding: 1rem 1rem;
+}
+.nav ul li a{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.nav ul li a:hover{
+    cursor: pointer;
+}
+/* End Header CSS*/
+
+.content{
+    margin-top: 10rem;
+}
+
+#dailyReport{
+    margin-top: 1rem;
+}
+.file_upload{
+    border:1px solid #e6e6e6;
+    padding: 2rem;
+    margin-top:1rem;
+}
+.search{
+    padding: 1rem;
+    display: flex;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 1rem;
+
+}
