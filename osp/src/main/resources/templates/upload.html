@@ -15,7 +15,8 @@
         <form method="post" th:action="@{/api/excel/daily}" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="ddate" class="form-label">Select Date</label>
-                <input type='text' id="ddate" name="ddate" class="datepicker-here" data-position="right top" />
+                <input type='text' id="ddate" name="ddate" autocomplete="off" />
+               <!-- <input type='text' id="ddate" name="ddate" class="datepicker-here" data-position="right top" />-->
             </div>
 
             <div class="form-group">
@@ -44,5 +45,61 @@
         </form>
     </div>
 </div>
+
+<th:block layout:fragment="scripts">
+    <script>
+        /*   $(document).ready(function() {
+               var table = $('#dailyReport').DataTable();
+
+               alert("hello");
+               // Event listener to the two range filtering inputs to redraw on input
+               $('#from_date, #to_date').keyup( function() {
+                   table.draw();
+
+               } );
+           })*/
+        var minDate, maxDate;
+
+        // Custom filtering function which will search data in column four between two values
+        /*$.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var min = minDate.val();
+                var max = maxDate.val();
+                var date = new Date( data[0] );
+
+                if (
+                    ( min === null && max === null ) ||
+                    ( min === null && date <= max ) ||
+                    ( min <= date   && max === null ) ||
+                    ( min <= date   && date <= max )
+                ) {
+                    return true;
+                }
+                return false;
+            }
+        );*/
+
+        $(document).ready(function() {
+            // Create date inputs
+            minDate = new DateTime($('#ddate'), {
+                format: 'MMMM Do YYYY'
+            });
+          /*  maxDate = new DateTime($('#to_date'), {
+                format: 'MMMM Do YYYY'
+            });*/
+
+
+
+            // DataTables initialisation
+           /* var table = $('#dailyReport').DataTable();
+
+            // Refilter the table
+            $('#from_date, #to_date').on('change', function () {
+
+                table.draw();
+            });*/
+        });
+    </script>
+</th:block>
 </body>
 </html>
