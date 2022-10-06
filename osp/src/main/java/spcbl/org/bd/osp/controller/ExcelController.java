@@ -1,6 +1,7 @@
 package spcbl.org.bd.osp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,8 @@ public class ExcelController {
     @Autowired
     WeaklyExcelService weaklyExcelService;
     @PostMapping("/daily")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("ddate") Date ddate, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam(name="ddate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date ddate, @RequestParam("file") MultipartFile file) {
+        System.out.println(ddate.toString());
         String message = "";
         if (DailyExcelHelper.hasExcelFormat(file)) {
             try {
