@@ -14,7 +14,10 @@ import spcbl.org.bd.osp.service.DailyExcelService;
 import spcbl.org.bd.osp.service.WeaklyExcelService;
 
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 @CrossOrigin("http://localhost:8080")
@@ -26,11 +29,11 @@ public class ExcelController {
     @Autowired
     WeaklyExcelService weaklyExcelService;
     @PostMapping("/daily")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam(name="ddate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date ddate, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam(name="ddate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "dd-MM-yyyy") Date ddate, @RequestParam("file") MultipartFile file) {
 
+       /* LocalDateTime localDateTime =  LocalDateTime.ofInstant(ddate.toInstant(), ZoneId.systemDefault());
+        System.out.println("New Time Package:" + localDateTime);*/
 
-
-        System.out.println(ddate.toString());
         String message = "";
         if (DailyExcelHelper.hasExcelFormat(file)) {
             try {
