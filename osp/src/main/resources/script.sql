@@ -1,38 +1,56 @@
-create table tbl_dpr
-(
-    id            int auto_increment
-        primary key,
-    date          date         null,
-    mc_name       varchar(10)  null,
-    item_name     varchar(100) null,
-    deno          varchar(10)  null,
-    total_printed int          null,
-    mc_status     varchar(100) null,
-    fo            varchar(20)  null
+select d.mc_name,d.date,sum(d.total_printed) from tbl_dpr d, tbl_wpr w
+where d.mc_name = w.machine_name
+  and d.date between '2022-08-13' and '2022-08-20'
+group by d.mc_name, d.date;
+
+
+select date,mc_name,sum(total_printed) from tbl_dpr
+where date between '2022-08-13' and '2022-08-20'
+  and mc_name='MR-2' group by date;
+
+select date,mc_name,total_printed from tbl_dpr where date between '2022-08-13' and '2022-08-20';
+
+/*View generate query*/
+create view printingstatus as select UUID() as id, d.mc_name,d.item_name,d.deno,d.fo, d.date,sum(d.total_printed) as dprinting,w.total_printing,(w.total_printing - sum(d.total_printed)) as pending,d.mc_status
+                              from tbl_dpr d, tbl_wpr w
+                              where d.mc_name = w.machine_name
+                                and d.date between (w.start_date) and (w.end_date)
+                              group by d.mc_name, d.date;
+
+delete from tbl_dpr;
+
+CREATE TABLE `tbl_users` (
+                             `user_id` int(11) NOT NULL AUTO_INCREMENT,
+                             `username` varchar(45) NOT NULL,
+                             `email` varchar(45) NOT NULL,
+                             `full_name` varchar(45) NOT NULL,
+                             `password` varchar(64) NOT NULL,
+                             `enabled` tinyint(4) DEFAULT NULL,
+                             PRIMARY KEY (`user_id`),
+                             UNIQUE KEY `email_UNIQUE` (`email`)
 );
 
-create table tbl_wpr
-(
-    id             int         null,
-    machine_name   varchar(20) null,
-    start_date     date        null,
-    end_date       date        null,
-    total_printing int         null
+CREATE TABLE `tbl_roles` (
+                             `role_id` int(11) NOT NULL AUTO_INCREMENT,
+                             `name` varchar(45) NOT NULL,
+                             PRIMARY KEY (`role_id`)
 );
 
-create definer = root@localhost view view_name as
-select uuid()                   AS `id`,
-       `d`.`mc_name`            AS `mc_name`,
-       `d`.`item_name`          AS `item_name`,
-       `d`.`deno`               AS `deno`,
-       `d`.`fo`                 AS `fo`,
-       `d`.`date`               AS `date`,
-       sum(`d`.`total_printed`) AS `dprinting`,
-       `w`.`total_printing`     AS `total_printing`,
-       `d`.`mc_status`          AS `mc_status`
-from `spcbl_osp`.`tbl_dpr` `d`
-         join `spcbl_osp`.`tbl_wpr` `w`
-where ((`d`.`mc_name` = `w`.`machine_name`) and (`d`.`date` between `w`.`start_date` and `w`.`end_date`))
-group by `d`.`mc_name`, `d`.`date`;
+CREATE TABLE `tbl_users_roles` (
+                                   `user_id` int(11) NOT NULL,
+                                   `role_id` int(11) NOT NULL,
+                                   KEY `user_fk_idx` (`user_id`),
+                                   KEY `role_fk_idx` (`role_id`),
+                                   CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `tbl_roles` (`role_id`),
+                                   CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`user_id`)
+);
+INSERT INTO `tbl_roles` (`name`) VALUES ('USER');
+INSERT INTO `tbl_roles` (`name`) VALUES ('CREATOR');
+INSERT INTO `tbl_roles` (`name`) VALUES ('EDITOR');
+INSERT INTO `tbl_roles` (`name`) VALUES ('ADMIN');
 
 
+INSERT INTO `tbl_users` (`username`, `email`,`password`, `enabled`,`full_name`) VALUES ('admin','prasunhowlader@yahoo.com', '$2a$10$IqTJTjn39IU5.7sSCDQxzu3xug6z/LPU6IF0azE/8CkHCwYEnwBX.', '1','Prasun Kanti Howlader');
+INSERT INTO `tbl_users_roles` (`user_id`, `role_id`) VALUES (1, 4);
+
+create database parkingcontroldb;
