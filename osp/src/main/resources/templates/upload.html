@@ -84,8 +84,8 @@
         $(document).ready(function() {
             // Create date inputs
             uploadDate = new DateTime($('#ddate'), {
-                format: 'YYYY-MM-DD'
-                /*format: 'DD-MM-YYYY'*/
+                /*format: 'YYYY-MM-DD'*/
+                format: 'DD-MM-YYYY'
                /* format: 'MMMM Do YYYY'*/
             });
 
@@ -103,6 +103,10 @@
 
                 table.draw();
             });*/
+            $('#ddate').on('change', function () {
+
+               alert($('#ddate').val());
+            });
         });
     </script>
 </th:block>
