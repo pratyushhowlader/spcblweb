@@ -29,7 +29,7 @@ public class ExcelController {
     @Autowired
     WeaklyExcelService weaklyExcelService;
     @PostMapping("/daily")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam(name="ddate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "dd-MM-yyyy") Date ddate, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam(name="ddate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate ddate, @RequestParam("file") MultipartFile file) {
 
        /* LocalDateTime localDateTime =  LocalDateTime.ofInstant(ddate.toInstant(), ZoneId.systemDefault());
         System.out.println("New Time Package:" + localDateTime);*/

@@ -11,6 +11,7 @@ import spcbl.org.bd.osp.model.DailyProduction;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ public class DailyExcelHelper {
         }
         return true;
     }
-    public static List<DailyProduction> excelToTutorials(InputStream is,Date ddate) {
+    public static List<DailyProduction> excelToTutorials(InputStream is, LocalDate ddate) {
 
         try {
             System.out.println("test");

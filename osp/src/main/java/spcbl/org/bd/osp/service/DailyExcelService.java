@@ -9,13 +9,14 @@ import spcbl.org.bd.osp.repository.DailyProductionRepo;
 
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 @Service
 public class DailyExcelService {
     @Autowired
     DailyProductionRepo repository;
-    public void save(MultipartFile file, Date ddate) {
+    public void save(MultipartFile file, LocalDate ddate) {
         try {
             List<DailyProduction> tutorials = DailyExcelHelper.excelToTutorials(file.getInputStream(),ddate);
             repository.saveAll(tutorials);

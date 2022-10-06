@@ -3,6 +3,7 @@ package spcbl.org.bd.osp.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,9 +15,9 @@ public class DailyProduction {
 
 
     @Column(name = "date")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    /*@Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")*/
+    private LocalDate date;
 
     @Column(name = "mc_name")
     private String mcName;
@@ -53,11 +54,11 @@ public class DailyProduction {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
