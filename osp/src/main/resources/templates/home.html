@@ -110,10 +110,12 @@
      $(document).ready(function() {
          // Create date inputs
          minDate = new DateTime($('#from_date'), {
-             format: 'MMMM Do YYYY'
+             /*format: 'MMMM Do YYYY'*/
+             format: 'DD-MM-YYYY'
+
          });
          maxDate = new DateTime($('#to_date'), {
-             format: 'MMMM Do YYYY'
+             format: 'DD-MM-YYYY'
          });
 
 
