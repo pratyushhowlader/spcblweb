@@ -12,11 +12,7 @@
 </head>
 <body>
 <div class="content" layout:fragment="content">
-    <div sec:authorize="isAuthenticated()">
-        Welcome <b><span sec:authentication="name">Username</span></b>
-        &nbsp;
-        <i><span sec:authentication="principal.authorities">Roles</span></i>
-    </div>
+
 
     <div class="search">
         <div class="">

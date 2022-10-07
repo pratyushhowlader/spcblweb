@@ -5,8 +5,9 @@ h3{
     font-weight: 500;
 }
 .container{
-    grid-template-rows: 6rem 90vh;
-    grid-template-columns: 22rem calc(100vh - 22rem);
+    display: grid;
+    grid-template-rows: 6rem calc(100vh - 6rem);
+    grid-template-columns: 22rem calc(100vw - 22rem);
 
 }
 
@@ -38,11 +39,25 @@ h3{
 .header nav ul li{
     display: inline-block;
 }
-.header nav ul li a{
+.header nav ul li a {
     padding: 1rem;
 }
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+.sidebar{
+    grid-column: 1 / 1;
+    grid-row: 2;
+    background-color: #2b2b2b;
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
 .content{
-    margin-top: 10rem;
+grid-column: 2 / -1;
+    grid-row: 2;
+    background-color: #888888;
 }
 
 #dailyReport{
