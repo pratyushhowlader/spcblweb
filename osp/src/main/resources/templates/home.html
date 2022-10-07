@@ -119,7 +119,12 @@
 
 
          // DataTables initialisation
-         var table = $('#dailyReport').DataTable();
+         var table = $('#dailyReport').DataTable({
+             dom: 'Bfrtip',
+             buttons: [
+                 'copy', 'csv', 'excel', 'pdf', 'print'
+             ]
+         });
 
          // Refilter the table
          $('#from_date, #to_date').on('change', function () {
