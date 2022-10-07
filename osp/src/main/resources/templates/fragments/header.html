@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en"
-xmlns:th="http://www.thymeleaf.org">
+xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <header class="header" th:fragment="header" >
-    <a href=""><img src="images/logo_spcbl.gif" alt="" srcset=""></a>
+   <div class="logo">
+       <a href="http://www.spcbl.org.bd/"><img src="images/logo_spcbl.gif" alt="" srcset=""></a>
+       <h3>OSP</h3>
+   </div>
     <nav>
-        <ul>
-            <li><a href=""><i class="fa fa-twitter"></i> Profile</a></li>
-            <li><a href=""><i></i>Logout</a></li>
+        <ul sec:authorize="isAuthenticated()">
+            <!--<div sec:authorize="isAuthenticated()">
+                Welcome <b><span sec:authentication="name">Username</span></b>
+                &nbsp;
+                <i><span sec:authentication="principal.authorities">Roles</span></i>
+            </div>-->
+            <li ><a href=""><i class="fa fa-user-o" aria-hidden="true"></i> <span sec:authentication="name">Username</span></a></li>
+            <li><a href=""><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a></li>
         </ul>
     </nav>
 
