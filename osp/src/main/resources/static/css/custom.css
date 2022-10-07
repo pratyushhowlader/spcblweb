@@ -7,7 +7,8 @@ h3 {
 .container {
     display: grid;
     grid-template-rows: 6rem calc(100vh - 6rem);
-    grid-template-columns: 22rem calc(100vw - 22rem);
+    /*grid-template-columns: 22rem calc(100vw - 23rem);*/
+    grid-template-columns: 22rem repeat(8,1fr);
     grid-column-gap: 1rem;
 
 
@@ -93,6 +94,7 @@ h3 {
 .content {
     grid-column: 2 / -1;
     background-color: #f6f6f6;
+    margin-top:1rem;
 
 }
 .card {
