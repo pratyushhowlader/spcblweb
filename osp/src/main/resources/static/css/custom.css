@@ -10,30 +10,14 @@ h3{
 
 }
 
-/*Header CSS*/
-.nav{
-    display: flex;
-    border-bottom: 1px solid darkred;
-    justify-content: flex-end;
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header{
+    grid-column: 1 / -1;
+    background-color: yellow;
 }
-.nav ul{
-    list-style: none;
-
-}
-.nav ul li{
-    display: inline-block;
-    padding: 1rem 1rem;
-}
-.nav ul li a{
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-.nav ul li a:hover{
-    cursor: pointer;
-}
-/* End Header CSS*/
-
+/*Header End*/
 .content{
     margin-top: 10rem;
 }
