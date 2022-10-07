@@ -12,57 +12,66 @@
 </head>
 <body>
 <div class="content" layout:fragment="content">
+<div class="card">
+    <div class="card-header">
+        <span><i class="fa fa-filter" aria-hidden="true"></i>Production Summary</span>
+        <div class="search">
+            <div class="form-group">
+                <label for="from_date">From Date</label>
 
+                <input type='text' id="from_date" name="minDate" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <label for="to_date">To Date</label>
 
-    <div class="search">
-        <div class="">
-            <label for="from_date">From Date</label>
-
-            <input type='text' id="from_date" name="minDate" autocomplete="off" />
+                <input type='text' id="to_date" name="maxDate"  autocomplete="off" />
+            </div>
         </div>
-        <div class="">
-            <label for="to_date">To Date</label>
 
-            <input type='text' id="to_date" name="maxDate"  autocomplete="off" />
-        </div>
     </div>
-    <h3>Production Report</h3>
-    <table id="dailyReport" class="table table-bordered table-striped" >
+    <div class="card-body">
+        <table id="dailyReport" class="table table-bordered table-striped" >
 
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Machine Name</th>
-            <th>Item Name</th>
-            <th>Deno</th>
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Machine Name</th>
+                <th>Item Name</th>
+                <th>Deno</th>
 
-            <th>Daily Printing</th>
-            <th>Weakly Target</th>
-            <th>Pending</th>
-            <th>Machine Status</th>
-        </tr>
-        </thead>
-        <tbody>
-
-
-          <tr  th:each="production: ${productionlist}">
-
-              <td th:text="${production.date}" />
-              <td th:text="${production.mcName}" />
-              <td th:text="${production.itemName}" />
-              <td th:text="${production.deno}" />
-
-              <td th:text="${production.dprinting}" />
-              <td th:text="${production.totalPrinting}" />
-              <td th:text="${production.pending}"/>
-              <td th:text="${production.machineStatus}" />
+                <th>Daily Printing</th>
+                <th>Weakly Target</th>
+                <th>Pending</th>
+                <th>Machine Status</th>
+            </tr>
+            </thead>
+            <tbody>
 
 
+            <tr  th:each="production: ${productionlist}">
 
-          </tr>
-        </tbody>
+                <td th:text="${production.date}" />
+                <td th:text="${production.mcName}" />
+                <td th:text="${production.itemName}" />
+                <td th:text="${production.deno}" />
 
-    </table>
+                <td th:text="${production.dprinting}" />
+                <td th:text="${production.totalPrinting}" />
+                <td th:text="${production.pending}"/>
+                <td th:text="${production.machineStatus}" />
+
+
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+
 </div>
 
 <th:block layout:fragment="scripts">
