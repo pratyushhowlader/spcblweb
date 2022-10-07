@@ -10,7 +10,13 @@
 
 <div class="container">
     <div th:replace="fragments/header::header"></div>
-    <div class="sidebar">Side bar</div>
+    <div class="sidebar">
+        <ul>
+            <li><a href=""><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a></li>
+            <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i>Reports</a></li>
+            <li><a href=""><i class="fa fa-upload" aria-hidden="true"></i>Uploads</a></li>
+            <li><a href=""><i class="fa fa-cog" aria-hidden="true"></i>System</a></li>
+        </ul></div>
     <div layout:fragment="content"></div>
 </div>
 
