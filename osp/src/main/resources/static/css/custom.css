@@ -16,8 +16,27 @@ h3{
 .header{
     grid-column: 1 / -1;
     background-color: yellow;
+    display: flex;
+    align-items: center;
 }
-/*Header End*/
+.header a{
+    margin-right: auto;
+}
+.header a img{
+    width:6rem;
+    height: auto;
+}
+.header nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header nav ul li{
+    display: inline-block;
+}
+.header nav ul li a{
+    padding: 1rem;
+}
 .content{
     margin-top: 10rem;
 }
