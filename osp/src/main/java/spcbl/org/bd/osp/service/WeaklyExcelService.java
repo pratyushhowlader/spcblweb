@@ -11,6 +11,7 @@ import spcbl.org.bd.osp.repository.DailyProductionRepo;
 import spcbl.org.bd.osp.repository.WeaklyPlanningRepo;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
 public class WeaklyExcelService {
     @Autowired
     WeaklyPlanningRepo repository;
-    public void save(MultipartFile file, Date sdate,Date edate) {
+    public void save(MultipartFile file, LocalDate sdate, LocalDate edate) {
         try {
             List<WeaklyPlanning> tutorials = WeaklyExcelHelper.excelToTutorials(file.getInputStream(),sdate,edate);
             repository.saveAll(tutorials);

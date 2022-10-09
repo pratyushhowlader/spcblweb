@@ -51,7 +51,7 @@ public class ExcelController {
     }
 
     @PostMapping("/weakly")
-    public ResponseEntity<ResponseMessage> uploadFileWeakly(@RequestParam("sdate") Date sdate, @RequestParam("edate") Date edate, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFileWeakly(@RequestParam(name="sdate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate sdate, @RequestParam(name="edate",defaultValue = "1900-01-01") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate edate, @RequestParam("file") MultipartFile file) {
         String message = "";
         if (WeaklyExcelHelper.hasExcelFormat(file)) {
             try {

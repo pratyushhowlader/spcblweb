@@ -1,6 +1,7 @@
 package spcbl.org.bd.osp.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,10 +16,10 @@ public class WeaklyPlanning {
     private String machineName;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "total_printing")
     private Integer totalPrinting;
@@ -39,19 +40,19 @@ public class WeaklyPlanning {
         this.machineName = machineName;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

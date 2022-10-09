@@ -11,6 +11,7 @@ import spcbl.org.bd.osp.model.WeaklyPlanning;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ public class WeaklyExcelHelper {
         }
         return true;
     }
-    public static List<WeaklyPlanning> excelToTutorials(InputStream is, Date sDate,Date eDate) {
+    public static List<WeaklyPlanning> excelToTutorials(InputStream is, LocalDate sDate, LocalDate eDate) {
         try {
             System.out.println("test");
             Workbook workbook = new XSSFWorkbook(is);
