@@ -38,12 +38,12 @@
         <div class="file_upload">
             <form method="post" th:action="@{/api/excel/weakly}" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="ddate" class="form-label">Select Start Date</label>
-                    <input type='text' id="sdate" name="sdate" class="datepicker-here" data-position="right top" />
+                    <label for="sdate" class="form-label">Select Start Date</label>
+                    <input type='text' id="sdate" name="sdate" />
                 </div>
                 <div class="form-group">
                     <label for="edate" class="form-label">Select End Date</label>
-                    <input type='text' id="edate" name="edate" class="datepicker-here" data-position="right top" />
+                    <input type='text' id="edate" name="edate"  />
                 </div>
                 <div class="form-group">
                     <label for="wFile" class="form-label">Choose Weakly Excel</label>
@@ -72,7 +72,7 @@
 
                } );
            })*/
-        var uploadDate;
+        var uploadDate,sdate,edate;
 
         // Custom filtering function which will search data in column four between two values
         /*$.fn.dataTable.ext.search.push(
@@ -100,6 +100,8 @@
                 format: 'DD-MM-YYYY'
                /* format: 'MMMM Do YYYY'*/
             });
+            sdate = new DateTime($('#sdate'),{ format: 'DD-MM-YYYY'});
+            edate = new DateTime($('#edate'),{ format: 'DD-MM-YYYY'});
 
           /*  maxDate = new DateTime($('#to_date'), {
                 format: 'MMMM Do YYYY'
