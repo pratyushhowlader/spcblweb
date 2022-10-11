@@ -17,7 +17,7 @@ public class DeviceInfo {
 
     private String deviceName;
     @OneToOne
-    @JoinColumn(name = "device_id",referencedColumnName = "id")
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
     private DeviceCategory category;
 
     private String serialNo;
