@@ -19,8 +19,9 @@ public class CategoryController {
     @RequestMapping("/category")
     public ModelAndView category(){
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(deviceCategoryService.getCategoryList());
+
         modelAndView.addObject("categoryList",deviceCategoryService.getCategoryList());
+        modelAndView.setViewName("category/category.html");
         return modelAndView;
     }
 
