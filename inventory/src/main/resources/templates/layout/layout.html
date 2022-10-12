@@ -2,27 +2,27 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head  th:replace="fragments/header::header">
+<head  th:replace="fragments/head::head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
 <div class="container">
-    <header class="header">
+    <div th:replace="fragments/header::header"></div>
+    <div class="sidebar">
         <ul>
-            <li><a href="">Help</a></li>
-            <li><a href="">ICTinventory</a></li>
+            <li><a th:href="@{/}"><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a></li>
+            <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i>Reports</a></li>
+            <li><a th:href="@{/upload}"><i class="fa fa-upload" aria-hidden="true"></i>Uploads</a></li>
+            <li><a href=""><i class="fa fa-cog" aria-hidden="true"></i>System</a></li>
         </ul>
-    </header>
-    <div th:replace="fragments/navigation::navigation"></div>
+    </div>
     <div layout:fragment="content"></div>
-    <footer class="footer"><h2>This is footer</h2></footer>
 </div>
 
 <th:block layout:fragment="scripts">
 
 </th:block>
-
 </body>
 </html>

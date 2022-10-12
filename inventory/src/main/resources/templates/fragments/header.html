@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
-<head  th:fragment="header">
+xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/fonts/fonts.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-    <!--<link rel="stylesheet" th:href="@{/css/datepicker.min.css}"/>-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
-    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <!--<script th:src="@{/js/jquery.min.js}"></script>-->
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>-->
-    <!--<link th:rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}"/>
-
-    <script th:src="@{/js/jquery.dataTables.min.js}"></script>-->
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
-
-    <script th:src="@{/js/datepicker.min.js}"></script>-->
-
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
-
-    <script th:src="@{/js/custom.js}"></script>
-    <link rel="stylesheet" th:href="@{/css/normalize.css}">
-    <link rel="stylesheet" th:href="@{/css/custom.css}"/>
 </head>
 <body>
+<header class="header" th:fragment="header" >
+   <div class="logo">
+       <a href="http://www.spcbl.org.bd/"><img src="images/logo_spcbl.gif" alt="" srcset=""></a>
+       <h3>The Security Printing Corporation (Bangladesh) Ltd.</h3>
+   </div>
+    <nav>
+        <ul sec:authorize="isAuthenticated()">
+            <!--<div sec:authorize="isAuthenticated()">
+                Welcome <b><span sec:authentication="name">Username</span></b>
+                &nbsp;
+                <i><span sec:authentication="principal.authorities">Roles</span></i>
+            </div>-->
+            <li ><a href=""><i class="fa fa-user-o" aria-hidden="true"></i> <span sec:authentication="name">Username</span></a></li>
+            <li><a href=""><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a></li>
+        </ul>
+    </nav>
 
+</header>
 </body>
 </html>
