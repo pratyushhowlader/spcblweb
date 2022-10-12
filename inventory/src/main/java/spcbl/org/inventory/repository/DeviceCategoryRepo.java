@@ -7,7 +7,7 @@
 package spcbl.org.inventory.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import spcbl.org.inventory.entity.DeviceCategory;
+import spcbl.org.inventory.entity.DeviceCategoryEntity;
 
-public interface DeviceCategoryRepo extends JpaRepository<DeviceCategory,Long> {
+public interface DeviceCategoryRepo extends JpaRepository<DeviceCategoryEntity,Long> {
 }

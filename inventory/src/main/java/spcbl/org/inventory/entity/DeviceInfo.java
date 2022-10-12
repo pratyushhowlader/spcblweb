@@ -18,7 +18,7 @@ public class DeviceInfo {
     private String deviceName;
     @OneToOne
     @JoinColumn(name = "category_id",referencedColumnName = "id")
-    private DeviceCategory category;
+    private DeviceCategoryEntity category;
 
     private String serialNo;
     private String description;
@@ -30,7 +30,7 @@ public class DeviceInfo {
     public DeviceInfo() {
     }
 
-    public DeviceInfo(Long id, String deviceName, DeviceCategory category, String serialNo, String description, boolean status, LocalDate receiveDate, String comments) {
+    public DeviceInfo(Long id, String deviceName, DeviceCategoryEntity category, String serialNo, String description, boolean status, LocalDate receiveDate, String comments) {
         this.id = id;
         this.deviceName = deviceName;
         this.category = category;
@@ -57,11 +57,11 @@ public class DeviceInfo {
         this.deviceName = deviceName;
     }
 
-    public DeviceCategory getCategory() {
+    public DeviceCategoryEntity getCategory() {
         return category;
     }
 
-    public void setCategory(DeviceCategory category) {
+    public void setCategory(DeviceCategoryEntity category) {
         this.category = category;
     }
 

@@ -1,27 +1,18 @@
 /*
- * Copyright (c) 10/11/22, 10:30 AM.
+ * Copyright (c) 10/12/22, 1:26 PM.
  * Author: Prasun Kanti Howlader
  * All rights reserved
  */
 
-package spcbl.org.inventory.entity;
+package spcbl.org.inventory.model;
 
-import javax.persistence.*;
-
-@Entity
 public class DeviceCategory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String categoryName;
 
-    @OneToOne(mappedBy = "category")
-    private DeviceInfo deviceInfo;
-
-    public DeviceCategory(Long id, String categoryName, DeviceInfo deviceInfo) {
+    public DeviceCategory(Long id, String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
-        this.deviceInfo = deviceInfo;
     }
 
     public DeviceCategory() {
@@ -35,6 +26,7 @@ public class DeviceCategory {
         this.id = id;
     }
 
+
     public String getCategoryName() {
         return categoryName;
     }
@@ -43,20 +35,11 @@ public class DeviceCategory {
         this.categoryName = categoryName;
     }
 
-    public DeviceInfo getDeviceInfo() {
-        return deviceInfo;
-    }
-
-    public void setDeviceInfo(DeviceInfo deviceInfo) {
-        this.deviceInfo = deviceInfo;
-    }
-
     @Override
     public String toString() {
         return "DeviceCategory{" +
                 "id=" + id +
                 ", categoryName='" + categoryName + '\'' +
-                ", deviceInfo=" + deviceInfo +
                 '}';
     }
 }
