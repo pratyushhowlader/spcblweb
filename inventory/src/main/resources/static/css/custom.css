@@ -93,9 +93,51 @@ h3 {
 --------------------------------------------------------------*/
 .content {
     grid-column: 2 / -1;
-    background-color: #f6f6f6;
-    margin-top:1rem;
+ /*   background-color: #f6f6f6;*/
+    /*background-color: red;*/
+    /*margin-top:1rem;*/
+  /*  position: relative;
+    margin:0 auto;*/
 
+}
+.content_header {
+    display: flex;
+  padding: 0 1rem;
+    border: 1px solid rgba(0,0,0,.125);
+    background-color: azure;
+}
+
+.content_header h3 {
+    margin-right: auto;
+    /* margin-left: 0rem; */
+    font-size: 2.3rem;
+    font-weight: 500;
+    color: #424242;
+}
+.content_header .current_time{
+    display: flex;
+    flex-direction: column;
+
+
+}
+.current_time > span{
+    text-align: center;
+  /*  margin-bottom: 1rem;*/
+    font-weight: 500;
+}
+.content_header .current_time .date_time_clock{
+    display: flex;
+    justify-content: space-between;
+}
+.date_time_clock .day_date{
+    line-height: 1.7rem;
+    margin-right: 2rem;
+}
+.date_time_clock .clock{
+    font-size: 2.4rem;
+    color:#424242;
+    font-weight: 500;
+    align-self: center;
 }
 .card {
     padding:1rem;
@@ -108,6 +150,7 @@ h3 {
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .2308rem;
+    background-color: green;
 }
 .card-header {
     padding: .7692307692rem 1rem;
@@ -139,6 +182,11 @@ h3 {
 .card-body{
     padding: 1rem;
     background-color: #fff;
+}
+.content_main{
+    /*padding:1rem;*/
+    margin:1rem;
+    border:1px solid rgba(0,0,0,.125);
 }
 #dailyReport {
     margin-top: 1rem;
