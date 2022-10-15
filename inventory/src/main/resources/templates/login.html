@@ -26,31 +26,72 @@
             background: #eee;
         }
 
+    .container{
+        height:100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login_form{
+        width:35rem;
+        margin:3rem auto;
+        font-size: 1.5rem;
+        padding:2rem;
+        background: #fff;
+        border:1px solid rgba(0,0,0,.125);
+    }
+    h3{
+        font-size: 1.7rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+    .form-group{
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+    }
+.form-group > label{
+    flex:1;
+}
+.form-group > input{
+    flex:2;
+    padding:.5rem;
+    outline: none;
+}
 
-
+button[type="submit"]{
+    padding:.5rem;
+    width:100%;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
 
 
     </style>
 </head>
 <body>
 <div class="container">
+<div class="login_form">
+    <h3>Login</h3>
     <form method="post"
           role="form"
           th:action="@{/login}">
-        <fieldset>
-            <legend>Login</legend>
-            <div class="form-group">
-                <label for="txtUsername">User Name</label>
-                <input type="text" name="txtUserName" id="txtUsername">
-            </div>
-            <div class="form-group">
-                <label for="txtPassword">Password</label>
-                <input type="password" name="txtPassword" id="txtPassword">
-            </div>
-            <button type="submit">Login</button>
-        </fieldset>
+
+        <div class="form-group">
+            <label for="txtUsername">User Name</label>
+            <input type="text" name="txtUserName" id="txtUsername">
+        </div>
+        <div class="form-group">
+            <label for="txtPassword">Password</label>
+            <input type="password" name="txtPassword" id="txtPassword">
+        </div>
+        <button type="submit">Login</button>
+
 
     </form>
+</div>
+
+
 </div>
 
 
