@@ -99,7 +99,7 @@ h3 {
   /*  position: relative;
     margin:0 auto;*/
     border:1px solid rgba(0,0,0,.125);
-    padding:1rem;
+ /*   padding:1rem;*/
 
 }
 .content_header {
@@ -185,11 +185,23 @@ h3 {
     padding: 1rem;
     background-color: #fff;
 }
-.content_main{
+.widget{
     /*padding:1rem;*/
     margin:1rem;
     border:1px solid rgba(0,0,0,.125);
 }
+.widget_header{
+    background: #888888;
+    border:1px solid rgba(0,0,0,.125);
+    padding:1rem;
+}
+.widget_content{
+    background: #fff;
+    padding:2rem;
+    margin:2rem;
+    display: flex;
+}
+
 #dailyReport {
     margin-top: 1rem;
 }
