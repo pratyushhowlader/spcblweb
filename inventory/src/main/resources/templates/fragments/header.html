@@ -21,8 +21,14 @@ xmlns:th="http://www.thymeleaf.org"
                 <i><span sec:authentication="principal.authorities">Roles</span></i>
             </div>-->
             <li ><a href=""><i class="fa fa-user-o" aria-hidden="true"></i> <span sec:authentication="name">Username</span></a></li>
-            <li><a href=""><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a></li>
+            <li><a href="javascript:logoutForm.submit()"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a></li>
+<!--
+            <li><a href="javascript:logoutForm.submit()" onclick="document.getElementById('logoutForm').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a></li>
+-->
         </ul>
+        <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+            <input type="submit" value="Logout">
+        </form>
     </nav>
 
 </header>
