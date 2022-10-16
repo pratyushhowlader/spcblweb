@@ -6,6 +6,7 @@
 
 package spcbl.org.inventory.service;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import spcbl.org.inventory.entity.DeviceCategoryEntity;
 import spcbl.org.inventory.model.DeviceCategory;
@@ -23,17 +24,25 @@ public class DeviceCategoryServiceImpl implements DeviceCategoryService {
 
     @Override
     public DeviceCategory addNewCategory(DeviceCategory category) {
-        return null;
+        DeviceCategoryEntity deviceCategoryEntity = new DeviceCategoryEntity();
+        BeanUtils.copyProperties(category,deviceCategoryEntity);
+        categoryRepo.save(deviceCategoryEntity);
+        return category;
     }
 
     @Override
     public boolean deleteCategory(Long id) {
-        return false;
+        DeviceCategoryEntity deviceCategoryEntity = categoryRepo.findById(id).get();
+        categoryRepo.delete(deviceCategoryEntity);
+        return true;
     }
 
     @Override
     public DeviceCategory updateCategory(Long id, DeviceCategory category) {
-        return null;
+        DeviceCategoryEntity deviceCategoryEntity = categoryRepo.findById(id).get();
+        deviceCategoryEntity.setCategoryName(category.getCategoryName());
+        categoryRepo.save(deviceCategoryEntity);
+        return category;
     }
 
     @Override

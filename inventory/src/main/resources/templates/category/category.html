@@ -39,6 +39,7 @@
             <tr>
                 <th>SL</th>
                 <th>Category Name</th>
+                <th>Id</th>
 
             </tr>
             </thead>
@@ -49,6 +50,8 @@
 
                 <td th:text="${istat.index + 1}" />
                 <td th:text="${category.categoryName}" />
+                <td th:text="${category.id}" />
+
 
 
 
@@ -60,9 +63,9 @@
         <div class="operation">
             <h3 class="cat_name">Category Name</h3>
             <div class="button-group">
-                <a href="" class="btn">Update</a>
-                <a href="" class="btn">Delete</a>
-                <a href="" class="btn">Insert New Category</a>
+                <a href="" th:href="@{/categorydelete/{id}(id=${id})}" class="btn" id="update">Update</a>
+                <a href="" class="btn" id="delete">Delete</a>
+                <a href="" class="btn" id="insert">Insert New Category</a>
             </div>
 
 
@@ -79,13 +82,16 @@
    $(document).ready(function (){
       var table =  $('#categoryList').DataTable();
    /*   var table =  $('#categoryList').dataTable();*/
-
+        table.column(2).visible(false);
+        /*table.columns([0,1]).visible(false);*/
        $('#categoryList tbody').on( 'click', 'tr', function () {
-           console.log( table.row( this ).data());
-           var newHtml = $.map(table.row( this ).data(),function(value){
+           var categoryList =  table.row( this ).data();
+           $('.cat_name').text(categoryList[1]);
+           $('#delete').prop('href',"/deletecategory/" + categoryList[2]);
+         /*  var newHtml = $.map(table.row( this ).data(),function(value){
                return ('<span>' + value + '</span>');
            });
-           $('.cat_name').html(newHtml.join(""));
+           $('.cat_name').html(newHtml.join(""));*/
            /*console.log( table.api().row( this ).data().toArray() );*/
        } );
    });

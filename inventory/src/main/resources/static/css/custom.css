@@ -106,7 +106,7 @@ h3 {
     display: flex;
   padding: 0 1rem;
     border: 1px solid rgba(0,0,0,.125);
-    background-color: azure;
+    background-color: #f5b000;
 }
 
 .content_header h3 {
