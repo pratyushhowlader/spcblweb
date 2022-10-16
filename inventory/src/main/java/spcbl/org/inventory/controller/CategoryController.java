@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import spcbl.org.inventory.model.DeviceCategory;
 import spcbl.org.inventory.service.DeviceCategoryService;
 
-@Controller
+@RestController
 public class CategoryController {
     @Autowired
     DeviceCategoryService deviceCategoryService;
