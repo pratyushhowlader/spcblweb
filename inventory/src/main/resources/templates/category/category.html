@@ -82,7 +82,9 @@
 
        $('#categoryList tbody').on( 'click', 'tr', function () {
            console.log( table.row( this ).data());
-           var newHtml = $.map(table.row( this ).data(),function(value){return ('<span>' + value + '</span>');});
+           var newHtml = $.map(table.row( this ).data(),function(value){
+               return ('<span>' + value + '</span>');
+           });
            $('.cat_name').html(newHtml.join(""));
            /*console.log( table.api().row( this ).data().toArray() );*/
        } );
