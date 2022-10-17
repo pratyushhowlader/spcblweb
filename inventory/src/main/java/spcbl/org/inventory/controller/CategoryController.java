@@ -7,13 +7,20 @@
 package spcbl.org.inventory.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spcbl.org.inventory.model.DeviceCategory;
 import spcbl.org.inventory.service.DeviceCategoryService;
 
-@RestController
+import javax.websocket.server.PathParam;
+import java.util.HashMap;
+import java.util.Map;
+
+@Controller
 public class CategoryController {
     @Autowired
     DeviceCategoryService deviceCategoryService;
@@ -31,12 +38,15 @@ public class CategoryController {
         return deviceCategoryService.addNewCategory(deviceCategory);
     }
 
-    @RequestMapping(value = "/deletecategory/{id}")
-      public String deleteEmployee(@PathVariable Long id) {
+
+    @RequestMapping(value = "/deletecategory/{id}",method = {RequestMethod.GET, RequestMethod.PUT,RequestMethod.DELETE},headers = "Accept=application/json")
+    @CrossOrigin(origins = "*")
+      public ResponseEntity<Map<String,Boolean>> deleteEmployee(@PathVariable("id") Long id) {
         boolean deleted = false;
         deleted =deviceCategoryService.deleteCategory(id);
-
-        return "redirect:/category";
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted", deleted);
+        return ResponseEntity.ok(response);
     }
 
    /* @GetMapping("/employees/{id}")

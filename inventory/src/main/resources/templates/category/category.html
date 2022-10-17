@@ -101,12 +101,29 @@
            /*console.log( table.api().row( this ).data().toArray() );*/
        } );
 
-       $('#update').click(function () {
+       $('#update').on("click",function (event) {
+           event.preventDefault();
          /*  var ids = $.map(table.rows('.selected').data(), function (item) {
                return item[0]
            });
            console.log(ids)*/
-           alert(table.rows('.selected').data().length + ' row(s) selected');
+          /* alert(table.rows('.selected').data().length + ' row(s) selected');*/
+           var id = 1;
+
+           $.ajax({
+               type:"DELETE",
+               dataType : "json",
+
+               data:JSON.stringify(id),
+               url: "http://localhost:9090/deletecategory/" +id,
+            /*   success: function() {
+                   alert("Success");
+
+               },
+               error:function(){
+                   alert("Error");
+               }*/
+           });
        });
    });
 
