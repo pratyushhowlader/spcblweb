@@ -58,6 +58,7 @@ public class WebSecurityConfig {
                 .and()
                 .logout().permitAll()
                 .and()
+                /*.csrf().disable()*/
                 .exceptionHandling().accessDeniedPage("/403")
         ;
         return http.build();

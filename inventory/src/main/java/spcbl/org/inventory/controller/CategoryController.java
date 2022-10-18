@@ -20,7 +20,7 @@ import javax.websocket.server.PathParam;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
+@RestController
 public class CategoryController {
     @Autowired
     DeviceCategoryService deviceCategoryService;
@@ -39,7 +39,7 @@ public class CategoryController {
     }
 
 
-    @RequestMapping(value = "/deletecategory/{id}",method = {RequestMethod.GET, RequestMethod.PUT,RequestMethod.DELETE},headers = "Accept=application/json")
+    @RequestMapping(value = "/deletecategory/{id}",method = {RequestMethod.DELETE},headers = "Accept=application/json")
     @CrossOrigin(origins = "*")
       public ResponseEntity<Map<String,Boolean>> deleteEmployee(@PathVariable("id") Long id) {
         boolean deleted = false;
