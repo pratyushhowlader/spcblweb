@@ -34,33 +34,36 @@
         <h3>Category</h3>
     </div>
     <div class="widget_content">
-        <table id="categoryList" class="display" >
+        <div class="categoryListContainer">
+            <table id="categoryList" class="display" >
 
-            <thead>
-            <tr>
-                <th>SL</th>
-                <th>Category Name</th>
-                <th>Id</th>
+                <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Category Name</th>
+                    <th>Id</th>
 
-            </tr>
-            </thead>
-            <tbody>
-
-
-            <tr  th:each="category,istat: ${categoryList}" >
-
-                <td th:text="${istat.index + 1}" />
-                <td th:text="${category.categoryName}" />
-                <td th:text="${category.id}" />
+                </tr>
+                </thead>
+                <tbody>
 
 
+                <tr  th:each="category,istat: ${categoryList}" >
+
+                    <td th:text="${istat.index + 1}" />
+                    <td th:text="${category.categoryName}" />
+                    <td th:text="${category.id}" />
 
 
 
-            </tr>
-            </tbody>
 
-        </table>
+
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
         <div class="operation">
             <h3 class="cat_name">Category Name</h3>
             <div class="button-group">
@@ -81,7 +84,24 @@
 <th:block layout:fragment="scripts">
 <script>
    $(document).ready(function (){
-      var table =  $('#categoryList').DataTable();
+       $.extend(true, $.fn.dataTable.defaults, {
+           language: {
+               search: ""
+           }
+       });
+       $('[type=search]').each(function () {
+           $(this).attr("placeholder", "Search...");
+           $(this).before('<span class="fa fa-search"></span>');
+       });
+      var table =  $('#categoryList').DataTable({
+          "sDom": 'frtlip',
+          "language":{"search": '<i class="fa fa-search"></i>',
+              "searchPlaceholder": "search",
+              "paginate": {
+                  "previous": '<i class="fa fa-angle-left"></i>',
+                  "next": '<i class="fa fa-angle-right"></i>'
+              }}
+      });/*sDom is responsible for displaying table element*/
    /*   var table =  $('#categoryList').dataTable();*/
         table.column(2).visible(false);
         /*table.columns([0,1]).visible(false);*/

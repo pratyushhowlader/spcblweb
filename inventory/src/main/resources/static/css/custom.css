@@ -19,11 +19,12 @@ h3 {
 --------------------------------------------------------------*/
 .header {
     grid-column: 1 / -1;
-    background-color: #fff;
+    background-color: #665cac;
+    color:#fff;
     display: flex;
     align-items: center;
 
-    border: 1px solid #d8d8d8;
+    border: 1px solid #5236b7;
     box-shadow: 0 0 3px #ccc;
 }
 
@@ -51,6 +52,7 @@ h3 {
 
 .header nav ul li a {
     padding: 1rem;
+    color:#fff;
 }
 
 /*--------------------------------------------------------------
@@ -59,11 +61,11 @@ h3 {
 .sidebar {
     grid-column: 1 / 1;
 
-    background-color: #242d37;
+    background-color: #6b54bd;
 }
 
 .sidebar ul li a {
-    color: #b3cbdd;
+    color: #fff;
     padding: 1rem;
     display: block;
 
@@ -84,7 +86,7 @@ h3 {
 
 
 .sidebar ul li a:hover {
-    background-color: #3d4d5d;
+    background-color: #5236b7;
 
 }
 
@@ -100,13 +102,14 @@ h3 {
     margin:0 auto;*/
     border:1px solid rgba(0,0,0,.125);
  /*   padding:1rem;*/
+    background: #f7f5ff;
 
 }
 .content_header {
     display: flex;
   padding: 0 1rem;
     border: 1px solid rgba(0,0,0,.125);
-    background-color: #f5b000;
+    background-color: #e8e1ff;
 }
 
 .content_header h3 {
@@ -191,19 +194,25 @@ h3 {
     border:1px solid rgba(0,0,0,.125);
 }
 .widget_header{
-    background: #888888;
+    background: #e8e1ff;
     border:1px solid rgba(0,0,0,.125);
     padding:1rem;
 }
 .widget_content{
-    background: #fff;
-    padding:2rem;
-    margin:2rem;
+
     display: flex;
 }
+.categoryListContainer{
+    background: #fff;
+    flex: 2;
+    padding: 1rem;
+    border-radius: 3px;
+}
+
 .operation {
     margin-left: 2rem;
     padding: 2rem;
+    flex:1;
 
 }
 .button-group{
@@ -263,4 +272,24 @@ h3 {
     color:#fff;
     text-align: center;
 
+}
+.dataTables_filter {
+    position: relative;
+}
+
+.dataTables_filter input {
+    width: 250px;
+    height: 32px;
+    background: #fcfcfc;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+    text-indent: 10px;
+}
+
+.dataTables_filter .fa-search {
+    position: absolute;
+    top: 10px;
+    left: auto;
+    right: 10px;
 }
