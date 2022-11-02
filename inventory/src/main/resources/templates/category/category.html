@@ -94,13 +94,16 @@
            $(this).before('<span class="fa fa-search"></span>');
        });
       var table =  $('#categoryList').DataTable({
-          "sDom": 'frtlip',
-          "language":{"search": '<i class="fa fa-search"></i>',
+          "dom": 'frt<"table_summary"lip>',
+          "language":{
+              "search": '<i class="fa fa-search"></i>',
               "searchPlaceholder": "search",
               "paginate": {
                   "previous": '<i class="fa fa-angle-left"></i>',
                   "next": '<i class="fa fa-angle-right"></i>'
-              }}
+              },
+              "lengthMenu": "_MENU_"
+          }
       });/*sDom is responsible for displaying table element*/
    /*   var table =  $('#categoryList').dataTable();*/
         table.column(2).visible(false);

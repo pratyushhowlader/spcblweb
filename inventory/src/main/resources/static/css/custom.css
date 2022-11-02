@@ -275,6 +275,7 @@ h3 {
 }
 .dataTables_filter {
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .dataTables_filter input {
@@ -292,4 +293,11 @@ h3 {
     top: 10px;
     left: auto;
     right: 10px;
+}
+table.dataTable thead th, table.dataTable tfoot th {
+
+    background: #e8e1ff!important;
+}
+.table_summary{
+    background:red;
 }
